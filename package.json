@@ -1,0 +1,26 @@
+{
+  "name": "servewp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steffanhalv/servewp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steffanhalv/servewp/issues"
+  },
+  "homepage": "https://github.com/steffanhalv/servewp#readme",
+  "dependencies": {
+    "compression": "^1.7.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "express-php-fpm": "^2.0.2"
+  }
+}

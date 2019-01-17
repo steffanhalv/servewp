@@ -1,47 +1,72 @@
-# servewp
-## Use expressjs instead of nginx / apache to serve wordpress sites.
-## Can be used for both development & production
-### Use foreverjs to serve in production
+# Replace nginx / apache using expressjs.
 
-## Debian / Ubuntu
-### Make sure you have php-fpm installed and listening on port 9000 (Can be customized)
+## Quick Start
 ```bash
-sudo apt-get install php7.0-fpm -y
-sudo apt-get install php-soap -y
-sudo apt-get install php-curl -y
-sudo apt-get install php-bcmath -y
-# Etc... Could be more dependencies depending on your php version etc.
-cd /etc/php/7.0/fpm/pool.d
-sudo nano www.conf
-# Uncomment this line: listen = /run/php/php7.0-fpm.sock
-# Add this line: listen = 127.0.0.1:9000
-# Ctrl + X & Save -> Restart serve:
-sudo service php7.0-fpm restart
+git clone https://github.com/steffanhalv/servewp .
+npm i
+npm run dev
+cd public
+wp core download
 ```
+
+## Production
+```bash
+npm i forever -g
+forever index.js
+```
+
+## Https support
+### Edit index.js
+
+1. Uncomment all https lines
+2. Replace path to cert files
+3. Restart forever using:
+
+```bash
+sudo forever restartall
+```
+
+___
+
+# Prerequisite
+
+### Make sure you have php-fpm installed and listening on tcp/ip port 9000 (can be customized)
 
 ## Mac
 ```bash
 brew install php72
 brew services start php@7.2
 # If you want to customise port (default is 9000) you can edit this file:
-# /usr/local/etc/php/7.2/php-fpm.d/www.conf -> listen = 127.0.0.1:9000
+# /usr/local/etc/php/7.2/php-fpm.d/www.conf
+# Change line: listen = 127.0.0.1:9000
 ```
 
 ## Windows
-Install php-fpm https://windows.php.net/download/
+Install php-fpm from https://windows.php.net/download/
+
 Be sure php is running & listening on tcp/ip 127.0.0.1:9000
+
+## Debian / Ubuntu
+```bash
+sudo apt-get install php7.0-fpm -y
+sudo apt-get install php-soap -y
+sudo apt-get install php-curl -y
+sudo apt-get install php-bcmath -y
+cd /etc/php/7.0/fpm/pool.d
+sudo nano www.conf
+# Uncomment: listen = /run/php/php7.0-fpm.sock
+# Add: listen = 127.0.0.1:9000
+# Then: Ctrl + X & Save -> Restart server:
+sudo service php7.0-fpm restart
+```
 
 ## Database
 MariaDB is recommended in production, but were using sqlite here for simple development setup.
 
 ## WP-CLI (Optional)
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-# Installation Guide
-### In a new clean directory:
 ```bash
-git clone https://github.com/steffanhalv/servewp .
-npm i
-npm run dev
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+wp cli update --nightly --yes
 ```
-
