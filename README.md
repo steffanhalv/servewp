@@ -61,7 +61,20 @@ sudo service php7.0-fpm restart
 ```
 
 ## Database
-MariaDB is recommended in production, but were using sqlite here for simple development setup.
+MariaDB is a good option: https://mariadb.com/
+
+Ex. Mac: 
+```bash
+brew install mariadb
+brew services start mariadb
+mysql -u root
+create database dev
+```
+
+Now start installing wp using:
+
+Database host: localhost
+
 
 ## WP-CLI (Optional)
 ```bash
