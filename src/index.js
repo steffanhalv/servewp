@@ -24,12 +24,12 @@ app.get('/example', (req, res) => {
 */
 app.use(compression())
 app.use('/', phpProxy({
-  documentRoot: path.join(__dirname, '/public'),
+  documentRoot: path.join(__dirname, '../public'),
   env: {},
   socketOptions: { port: phpFpmPort }
 }))
 app.use('/', (req, res, next) => {
-  if (res.url.indexOf('php') !== -1) {
+  if (res.url && res.url.indexOf('php') !== -1) {
     // res.header('Content-Type', 'text/html')
   }
   next()

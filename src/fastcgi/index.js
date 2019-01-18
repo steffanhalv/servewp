@@ -31,6 +31,9 @@ class Handler {
     let file = Handler.withoutQueryString(req.url)
     let base = '/'
 
+    // YOUR MOD REWRITE RULES CAN BE WRITTEN HERE
+    // @todo - Make it easier to config
+
     // Eq to: RewriteBase /
     // If not connected to base, return
     if (file.substr(0, base.length) !== base) {
@@ -44,8 +47,18 @@ class Handler {
     if (
       fs.existsSync(path.join(__dirname, '/../../public' + file)) &&
       file !== base &&
-      !file.endsWith('.php') &&
-      file.indexOf('wp-admin') === -1
+      !file.endsWith('.php') && (
+        file.indexOf('wp-admin') === -1 ||
+        file.endsWith('.css') ||
+        file.endsWith('.js') ||
+        file.endsWith('.webm') ||
+        file.endsWith('.mp4') ||
+        file.endsWith('.jpg') ||
+        file.endsWith('.png') ||
+        file.endsWith('.gif') ||
+        file.endsWith('.jpeg') ||
+        file.endsWith('.svg')
+      )
     ) {
       next()
       return
@@ -76,7 +89,9 @@ class Handler {
   // @todo
   getFreeReqId() {
     let i = 0
-    // while (this.connections[++i]) {}
+    /* eslint-disable */
+    while (this.connections[++i]) {}
+    /* eslint-enable */
     this.connections[i] = true
     return i
   }

@@ -9,6 +9,12 @@ const _defineProperty = (obj, key, value) => {
   } else { obj[key] = value } return obj
 }
 
+/* eslint-disable */
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+/* eslint-enable */
+
+/*
+
 const _objectSpread = (target, args) => {
   for (let i = 1; i < args.length; i++) {
     let source = args[i] != null ? args[i] : {}
@@ -25,6 +31,7 @@ const _objectSpread = (target, args) => {
   }
   return target
 }
+*/
 
 function createEnvironment(documentRoot, file, req, extraEnv) {
   const sep = req.url.indexOf('?')
@@ -60,11 +67,11 @@ function createEnvironment(documentRoot, file, req, extraEnv) {
 
   }
   const headers = Object.entries(req.headers).reduce((acc, [key, value]) => {
-    return _objectSpread({}, [acc, {
+    return _objectSpread({}, acc, {
       ['HTTP_' + key.toUpperCase().replace(/-/g, '_')]: String(value)
-    }])
+    })
   }, {})
-  return _objectSpread({}, [env, headers, extraEnv])
+  return _objectSpread({}, env, headers, extraEnv)
 }
 
 export default class Responder extends FCGIClient {
@@ -107,8 +114,8 @@ export default class Responder extends FCGIClient {
     this.next(e)
   }
 
-  onClose(hadError) {
-    console.log('Error', hadError)
+  onClose(err) {
+    if (err) console.error(err)
     this.handler.freeUpReqId(this.reqId)
   }
 

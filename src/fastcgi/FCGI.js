@@ -38,6 +38,14 @@ export {
 }
 
 const GetMsgType = type => {
+  /* eslint-disable */
+  for (const [key, value] of Object.entries(MSG)) {
+    if (value === type) {
+      return key;
+    }
+  }
+  /* eslint-enable */
+  /*
   let r = 11 // Unknown
   Object.keys(MSG).forEach(k => {
     if (MSG[k] === type) {
@@ -45,6 +53,7 @@ const GetMsgType = type => {
     }
   })
   return r
+  */
 }
 export { GetMsgType }
 

@@ -48,10 +48,10 @@ export default class FCGIClient {
   }
 
   /* eslint-disable */
-  onError(e) { console.log(e) }
+  onError(e) {}
 
-  onClose(hadError) { console.log('Had error', hadError) }
+  onClose(hadError) {}
 
-  onRecord(record) { console.log(record) }
+  onRecord(record) {}
   /* eslint-enable */
 }
