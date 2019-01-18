@@ -10,30 +10,22 @@ const _defineProperty = (obj, key, value) => {
 }
 
 /* eslint-disable */
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-/* eslint-enable */
-
-/*
-
-const _objectSpread = (target, args) => {
-  for (let i = 1; i < args.length; i++) {
-    let source = args[i] != null ? args[i] : {}
-    let ownKeys = Object.keys(source)
+const _objectSpread = target => {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {}
+    var ownKeys = Object.keys(source)
     if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(
-        Object.getOwnPropertySymbols(source).filter(sym => {
-          return Object.getOwnPropertyDescriptor(source, sym).enumerable
-        })
-      )
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(sym => {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable
+      }))
     } ownKeys.forEach(key => {
       _defineProperty(target, key, source[key])
     })
-  }
-  return target
+  } return target
 }
-*/
+/* eslint-enable */
 
-function createEnvironment(documentRoot, file, req, extraEnv) {
+const createEnvironment = (documentRoot, file, req, extraEnv) => {
   const sep = req.url.indexOf('?')
   const qs = sep === -1 ? '' : req.url.substr(sep + 1)
   const env = {
