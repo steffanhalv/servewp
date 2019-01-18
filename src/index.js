@@ -1,8 +1,9 @@
-const express = require("express")
-const phpProxy = require("./lib/index.js").default
+import express from 'express'
+import compression from 'compression'
+import path from 'path'
+import phpProxy from './fastcgi'
 // const https = require("https")
-const fs = require("fs")
-const compression = require('compression')
+// import fs from 'fs'
 
 /*
 const cert = {
@@ -22,19 +23,19 @@ app.get('/example', (req, res) => {
 })
 */
 app.use(compression())
-app.use("/", phpProxy({
-  documentRoot: __dirname + "/public",
+app.use('/', phpProxy({
+  documentRoot: path.join(__dirname, '/public'),
   env: {},
-  socketOptions: { port: phpFpmPort },
+  socketOptions: { port: phpFpmPort }
 }))
-app.use((req, res) => {
+app.use('/', (req, res, next) => {
   if (res.url.indexOf('php') !== -1) {
     // res.header('Content-Type', 'text/html')
   }
   next()
 })
-app.listen(primaryPort , () => {
-  console.log('Running at: http://localhost:' + primaryPort)
+app.listen(primaryPort, () => {
+  console.log('Webserver available at: http://localhost:' + primaryPort)
 })
 /*
 https.createServer({
