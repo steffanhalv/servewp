@@ -28,12 +28,6 @@ app.use('/', phpProxy({
   env: {},
   socketOptions: { port: phpFpmPort }
 }))
-app.use('/', (req, res, next) => {
-  if (res.url && res.url.indexOf('php') !== -1) {
-    // res.header('Content-Type', 'text/html')
-  }
-  next()
-})
 app.listen(primaryPort, () => {
   console.log('Webserver available at: http://localhost:' + primaryPort)
 })
