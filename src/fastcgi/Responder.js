@@ -10,7 +10,7 @@ const _defineProperty = (obj, key, value) => {
 }
 
 /* eslint-disable */
-const _objectSpread = target => {
+function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {}
     var ownKeys = Object.keys(source)
