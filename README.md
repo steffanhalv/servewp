@@ -35,9 +35,9 @@ ___
 
 # Prerequisite
 
-### Make sure you have php-fpm installed and listening on tcp/ip port 9000 (can be customized)
+Make sure you have php-fpm installed and listening on tcp/ip port 9000 _(can be customized)_
 
-## Mac
+## Install PHP-FPM for Mac
 ```bash
 brew install php72
 brew services start php@7.2
@@ -46,12 +46,12 @@ brew services start php@7.2
 # Change line: listen = 127.0.0.1:9000
 ```
 
-## Windows
+## Install PHP-FPM for Windows
 Install php-fpm from https://windows.php.net/download/
 
 Be sure php is running & listening on tcp/ip 127.0.0.1:9000
 
-## Debian / Ubuntu
+## Install PHP-FPM for Debian / Ubuntu
 ```bash
 sudo apt-get install php7.0-fpm -y
 sudo apt-get install php-soap -y
@@ -64,6 +64,8 @@ sudo nano www.conf
 # Then: Ctrl + X & Save -> Restart server:
 sudo service php7.0-fpm restart
 ```
+
+Database is also required for Wordpress as usual
 
 ## Database
 MariaDB is a good option: https://mariadb.com/
@@ -91,6 +93,8 @@ define('DB_PASSWORD', '');
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 ```
+
+If you dont want to manually download Wordpress, use WP-CLI
 
 ## WP-CLI (Optional)
 ```bash
