@@ -76,9 +76,9 @@ mysql -u root
 create database dev
 ```
 
-Now start installing wp using:
+**Now start installing wp using:**
 
-Database host: localhost
+**Database host:** localhost
 
 
 ## WP-CLI (Optional)
