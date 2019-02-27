@@ -1,6 +1,6 @@
 # Use expressjs to serve WP in both development & production mode with php-fpm
 
-## Quick Start
+## Development - Quick Start
 ```bash
 git clone https://github.com/steffanhalv/servewp .
 npm i
