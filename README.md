@@ -77,6 +77,7 @@ create database dev
 ```
 
 **Configure wp-config to use MariaDB:**
+- Or use the standard WP Installation process: https://codex.wordpress.org/Installing_WordPress
 ```php
 /** The name of the database for WordPress */
 define('DB_NAME', 'dev');
