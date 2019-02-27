@@ -4,10 +4,11 @@
 ```bash
 git clone https://github.com/steffanhalv/servewp .
 npm i
-npm run dev
 cd public
 wp core download
+npm run dev
 ```
+Then go to http://localhost to start Wordpress installation process
 
 ## Production
 ```bash
