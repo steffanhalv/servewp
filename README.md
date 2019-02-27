@@ -1,6 +1,8 @@
 # Use expressjs to serve WP in both development & production mode with php-fpm
 
-## Development - Quick Start
+## Quick Start
+
+### Development
 ```bash
 git clone https://github.com/steffanhalv/servewp .
 npm i
@@ -10,7 +12,7 @@ npm run dev
 ```
 Then go to http://localhost to start Wordpress installation process
 
-## Production
+### Production
 ```bash
 npm run build
 npm i forever -g
