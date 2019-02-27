@@ -18,7 +18,7 @@ cd dist
 forever index.js
 ```
 
-## Https support
+## HTTPS Support
 ### Edit index.js
 
 1. Uncomment all https lines
