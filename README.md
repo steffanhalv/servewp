@@ -1,4 +1,4 @@
-# Replace nginx / apache using expressjs.
+# Use expressjs to serve WP in both development & production mode with php-fpm
 
 ## Quick Start
 ```bash
