@@ -11,7 +11,9 @@ wp core download
 
 ## Production
 ```bash
+npm run build
 npm i forever -g
+cd dist
 forever index.js
 ```
 
