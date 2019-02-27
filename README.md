@@ -76,10 +76,20 @@ mysql -u root
 create database dev
 ```
 
-**Now start installing wp using:**
+**Configure wp-config to use MariaDB:**
+```php
+/** The name of the database for WordPress */
+define('DB_NAME', 'dev');
 
-**Database host:** localhost
+/** MySQL database username */
+define('DB_USER', 'root');
 
+/** MySQL database password */
+define('DB_PASSWORD', '');
+
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
+```
 
 ## WP-CLI (Optional)
 ```bash
