@@ -17,12 +17,30 @@ const primaryPort = 80
 // const sslPort = 443
 
 const app = express()
+app.use(compression())
+
+// Add thrailing slash - always
+app.use((req, res, next) => {
+  if (
+    req.path.substr(-1) !== '/' &&
+    req.path.length > 1 &&
+    req.path.split('/').pop().indexOf('.') === -1
+  ) {
+    let query = req.url.slice(req.path.length)
+    res.redirect(301, req.path + '/' + query)
+  } else {
+    next()
+  }
+})
+
 /* Example to override routes
 app.get('/example', (req, res) => {
   res.send('example')
 })
 */
-app.use(compression())
+app.get('/hey', (req, res) => {
+  res.send('Hey!')
+})
 app.use('/', phpProxy({
   documentRoot: path.join(__dirname, '../public'),
   env: {},
