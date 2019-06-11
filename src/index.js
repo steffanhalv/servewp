@@ -24,7 +24,8 @@ app.use((req, res, next) => {
   if (
     req.path.substr(-1) !== '/' &&
     req.path.length > 1 &&
-    req.path.split('/').pop().indexOf('.') === -1
+    req.path.split('/').pop().indexOf('.') === -1 &&
+    req.url.indexOf('?') === -1
   ) {
     let query = req.url.slice(req.path.length)
     res.redirect(301, req.path + '/' + query)

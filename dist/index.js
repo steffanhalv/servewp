@@ -26,7 +26,7 @@ var app = (0, _express.default)();
 app.use((0, _compression.default)()); // Add thrailing slash - always
 
 app.use(function (req, res, next) {
-  if (req.path.substr(-1) !== '/' && req.path.length > 1 && req.path.split('/').pop().indexOf('.') === -1) {
+  if (req.path.substr(-1) !== '/' && req.path.length > 1 && req.path.split('/').pop().indexOf('.') === -1 && req.url.indexOf('?') === -1) {
     var query = req.url.slice(req.path.length);
     res.redirect(301, req.path + '/' + query);
   } else {
