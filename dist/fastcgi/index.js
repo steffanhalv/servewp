@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -38,18 +38,18 @@ var Handler =
 /*#__PURE__*/
 function () {
   function Handler(opt) {
-    (0, _classCallCheck2.default)(this, Handler);
+    (0, _classCallCheck2["default"])(this, Handler);
     this.opt = opt;
 
     _defineProperty(this, 'connections', new Array(100));
 
-    _defineProperty(this, 'router', _express.default.Router());
+    _defineProperty(this, 'router', _express["default"].Router());
 
     this.router.use(this.handle.bind(this));
-    this.router.use(_express.default.static(opt.documentRoot));
+    this.router.use(_express["default"]["static"](opt.documentRoot));
   }
 
-  (0, _createClass2.default)(Handler, [{
+  (0, _createClass2["default"])(Handler, [{
     key: "handle",
     value: function handle(req, res, next) {
       var file = Handler.withoutQueryString(req.url);
@@ -66,7 +66,7 @@ function () {
       // If is file or directory, return
 
 
-      if (_fs.default.existsSync(_path.default.join(__dirname, '/../../public' + file)) && file !== base && !file.endsWith('.php') && (file.indexOf('wp-admin') === -1 || file.endsWith('.css') || file.endsWith('.js') || file.endsWith('.webm') || file.endsWith('.mp4') || file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.gif') || file.endsWith('.jpeg') || file.endsWith('.svg'))) {
+      if (_fs["default"].existsSync(_path["default"].join(__dirname, '/../../public' + file)) && file !== base && !file.endsWith('.php') && (file.indexOf('wp-admin') === -1 || file.endsWith('.css') || file.endsWith('.js') || file.endsWith('.webm') || file.endsWith('.mp4') || file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.gif') || file.endsWith('.jpeg') || file.endsWith('.svg'))) {
         next();
         return;
       } // Eq to: RewriteRule ^index\.php$ - [L]
@@ -86,11 +86,11 @@ function () {
       } // If not a path to php file, resolve by index.php
 
 
-      if (!_fs.default.existsSync(_path.default.join(__dirname, '/../../public' + file))) {
+      if (!_fs["default"].existsSync(_path["default"].join(__dirname, '/../../public' + file))) {
         file = base + 'index.php';
       }
 
-      new _Responder.default(this, file, req, res, next);
+      new _Responder["default"](this, file, req, res, next);
     } // @todo
 
   }, {
@@ -125,4 +125,4 @@ var _default = function _default(opt) {
   return new Handler(opt).router;
 };
 
-exports.default = _default;
+exports["default"] = _default;

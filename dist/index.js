@@ -22,8 +22,8 @@ const cert = {
 var phpFpmPort = 9000;
 var primaryPort = 80; // const sslPort = 443
 
-var app = (0, _express.default)();
-app.use((0, _compression.default)()); // Add thrailing slash - always
+var app = (0, _express["default"])();
+app.use((0, _compression["default"])()); // Add thrailing slash - always
 
 app.use(function (req, res, next) {
   if (req.path.substr(-1) !== '/' && req.path.length > 1 && req.path.split('/').pop().indexOf('.') === -1 && req.url.indexOf('?') === -1) {
@@ -42,8 +42,8 @@ app.get('/example', (req, res) => {
 app.get('/hey', function (req, res) {
   res.send('Hey!');
 });
-app.use('/', (0, _fastcgi.default)({
-  documentRoot: _path.default.join(__dirname, '../public'),
+app.use('/', (0, _fastcgi["default"])({
+  documentRoot: _path["default"].join(__dirname, '../public'),
   env: {},
   socketOptions: {
     port: phpFpmPort

@@ -47,12 +47,10 @@ exports.STATUS = STATUS;
 
 var GetMsgType = function GetMsgType(type) {
   /* eslint-disable */
-  var _arr = Object.entries(MSG);
-
-  for (var _i = 0; _i < _arr.length; _i++) {
-    var _arr$_i = (0, _slicedToArray2.default)(_arr[_i], 2),
-        key = _arr$_i[0],
-        value = _arr$_i[1];
+  for (var _i = 0, _Object$entries = Object.entries(MSG); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = (0, _slicedToArray2["default"])(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        value = _Object$entries$_i[1];
 
     if (value === type) {
       return key;
@@ -212,7 +210,7 @@ exports.createKeyValueBuffer = createKeyValueBuffer;
 
 var createKeyValueBufferFromObject = function createKeyValueBufferFromObject(object) {
   var buffers = Object.entries(object).map(function (_ref) {
-    var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+    var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
         key = _ref2[0],
         value = _ref2[1];
 

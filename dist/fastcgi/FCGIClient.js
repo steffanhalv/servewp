@@ -7,7 +7,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -36,7 +36,7 @@ var FCGIClient =
 /*#__PURE__*/
 function () {
   function FCGIClient(socketOptions) {
-    (0, _classCallCheck2.default)(this, FCGIClient);
+    (0, _classCallCheck2["default"])(this, FCGIClient);
 
     _defineProperty(this, 'buffer', Buffer.alloc(0));
 
@@ -47,13 +47,13 @@ function () {
     this.onData = this.onData.bind(this);
     this.onError = this.onError.bind(this);
     this.onClose = this.onClose.bind(this);
-    this.socket = _net.default.connect(socketOptions);
+    this.socket = _net["default"].connect(socketOptions);
     this.socket.on('data', this.onData);
     this.socket.on('error', this.onError);
     this.socket.on('close', this.onClose);
   }
 
-  (0, _createClass2.default)(FCGIClient, [{
+  (0, _createClass2["default"])(FCGIClient, [{
     key: "send",
     value: function send(msgType, content) {
       for (var offset = 0; offset < content.length || offset === 0; offset += 0xffff) {
@@ -96,4 +96,4 @@ function () {
   return FCGIClient;
 }();
 
-exports.default = FCGIClient;
+exports["default"] = FCGIClient;

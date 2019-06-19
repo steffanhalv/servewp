@@ -7,7 +7,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -15,13 +15,13 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
+
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 
 var _get2 = _interopRequireDefault(require("@babel/runtime/helpers/get"));
 
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
 var _defineProperty3 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
@@ -103,11 +103,11 @@ var createEnvironment = function createEnvironment(documentRoot, file, req, extr
 
   };
   var headers = Object.entries(req.headers).reduce(function (acc, _ref) {
-    var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+    var _ref2 = (0, _slicedToArray2["default"])(_ref, 2),
         key = _ref2[0],
         value = _ref2[1];
 
-    return _objectSpread({}, acc, (0, _defineProperty3.default)({}, 'HTTP_' + key.toUpperCase().replace(/-/g, '_'), String(value)));
+    return _objectSpread({}, acc, (0, _defineProperty3["default"])({}, 'HTTP_' + key.toUpperCase().replace(/-/g, '_'), String(value)));
   }, {});
   return _objectSpread({}, env, headers, extraEnv);
 };
@@ -115,21 +115,21 @@ var createEnvironment = function createEnvironment(documentRoot, file, req, extr
 var Responder =
 /*#__PURE__*/
 function (_FCGIClient) {
-  (0, _inherits2.default)(Responder, _FCGIClient);
+  (0, _inherits2["default"])(Responder, _FCGIClient);
 
   function Responder(handler, file, req, res, next) {
     var _this;
 
-    (0, _classCallCheck2.default)(this, Responder);
+    (0, _classCallCheck2["default"])(this, Responder);
     // init sockets
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Responder).call(this, handler.opt.socketOptions)); // locals
+    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(Responder).call(this, handler.opt.socketOptions)); // locals
 
     _this.handler = handler;
     _this.req = req;
     _this.res = res;
     _this.next = next;
 
-    _defineProperty((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)), 'gotHead', false);
+    _defineProperty((0, _assertThisInitialized2["default"])(_this), 'gotHead', false);
 
     _this.reqId = handler.getFreeReqId(); // debug
 
@@ -144,12 +144,12 @@ function (_FCGIClient) {
     _this.send(FCGI.MSG.PARAMS, Buffer.alloc(0)); // express request
 
 
-    req.on('data', _this.onReqData.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this))));
-    req.on('end', _this.onReqEnd.bind((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this))));
+    req.on('data', _this.onReqData.bind((0, _assertThisInitialized2["default"])(_this)));
+    req.on('end', _this.onReqEnd.bind((0, _assertThisInitialized2["default"])(_this)));
     return _this;
   }
 
-  (0, _createClass2.default)(Responder, [{
+  (0, _createClass2["default"])(Responder, [{
     key: "onReqData",
     value: function onReqData(chunk) {
       this.send(FCGI.MSG.STDIN, chunk);
@@ -174,7 +174,7 @@ function (_FCGIClient) {
     key: "send",
     value: function send(msgType, content) {
       console.log('send %s', FCGI.GetMsgType(msgType));
-      (0, _get2.default)((0, _getPrototypeOf2.default)(Responder.prototype), "send", this).call(this, msgType, content);
+      (0, _get2["default"])((0, _getPrototypeOf2["default"])(Responder.prototype), "send", this).call(this, msgType, content);
     }
   }, {
     key: "onRecord",
@@ -239,8 +239,8 @@ function (_FCGIClient) {
         _iteratorError = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
           }
         } finally {
           if (_didIteratorError) {
@@ -253,6 +253,6 @@ function (_FCGIClient) {
     }
   }]);
   return Responder;
-}(_FCGIClient2.default);
+}(_FCGIClient2["default"]);
 
-exports.default = Responder;
+exports["default"] = Responder;
